@@ -45,8 +45,8 @@ anocAIC <- function(object, ..., digits = 2) {
   objs <- c(object, list(...))
   
   # check correct input
-  if(any(sapply(objs, function(x) !inherits(x, "merMod"))))
-    stop("anocAIC can only deal with objects of class lmerMod or glmerMod")
+  if(any(sapply(objs, function(x) !inherits(x, c("merMod", "lme", "lm")))))
+    stop("anocAIC can only deal with objects of class lmerMod, glmerMod, lme or lm")
   
   # calculate cAICs
   cAICs <- lapply(objs, cAIC)
